@@ -1,0 +1,152 @@
+{% extends 'base.html.twig' %} 
+
+{% block header %}
+{% endblock %}
+
+{% block aside %}
+{% endblock %}
+
+{% block body %}
+    <div class="register-body">
+        <div class="register-body-div">
+            
+            {#{% if userError %}
+                <div class="usuarioIncorrecto">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}#}
+            
+            <form action="{{ path ('guardar')}}" name="guardar" method="POST" class="register-form">
+                {% if rol == 'admin' %}
+                    <div class="register-datos">
+                        <label class="texto-login">Elige Rol:</label>
+                        <select class="register-cajas reservas-select" name="rol" required>
+                            <option>
+
+                            </option>
+                            <option>
+                                admin
+                            </option>
+                        </select>
+                    </div>
+                {% endif %}
+                <div class="register-datos register-datos-responsive">
+                    <label class="texto-login">Nombre de usuario: *</label>
+                    <input type="text" id="username" name="username" class="register-cajas" class="cajaTexto-Form" onblur="comprobarUser()" placeholder="Introduzca un nombre de usuario"  maxlength="12" required>
+                    <br>
+                    <label class="usuarioIncorrecto" name="dniValido" id="spanName"></label>
+                </div>
+                <div class="register-datos">
+                    <label class="texto-login">Nombre: *</label>
+                    <input type="text" name="name" class="register-cajas" class="cajaTexto-Form" placeholder="Introduzca su nombre" maxlength="24" required>
+                </div>
+                <div class="register-datos">
+                    <label class="texto-login">Apellidos:</label>
+                    <input type="text" name="lastname" class="register-cajas" placeholder="Introduzca sus apellidos" maxlength="60">
+                </div>  
+                <div class="register-datos">
+                    <label class="texto-login">Contraseña: *</label>
+                    <input type="password" name="password" class="register-cajas" placeholder="Contraseña" maxlength="24" required>
+                </div>
+                <div class="register-datos">
+                    <label class="texto-login">Fecha de nacimiento: *</label>
+                    <input type="date" name="birthday" class="register-cajas" required>
+                </div> 
+                <div class="register-datos">
+                    <label class="texto-login">DNI: *</label>
+                    <input type="text" id="dni" name="dni" class="register-cajas cajaTexto-Form" oninput="validarDNI()" placeholder="Introduzca su DNI" maxlength="9" required>
+                    <br>
+                    <label class="usuarioIncorrecto" name="dniValido" id="spanDNI"></label>
+                </div>
+                <div class="register-datos">
+                    <label class="texto-login">Sexo:</label>
+                    <div class="register-form-sexoLabel">
+                        <input type="radio" class="resgister-checkbox" id="male" name="gender" value="H">
+                            <label for="male">H</label>
+
+                        <input type="radio" class="resgister-checkbox" id="female" name="gender" value="M">
+                            <label for="female">M</label>
+
+                        <input type="radio" class="resgister-checkbox" id="other" name="gender" value="">
+                            <label for="other">X</label>
+                    </div>
+                </div>
+                <div class="register-datos">
+                    <label class="texto-login">Email: *</label>
+                    <input type="email" name="email" class="register-cajas" placeholder="Introduzca su correo electrónico" maxlength="90" required>
+                </div>
+                <div class="register-datos">
+                    <label class="texto-login">Alergias:</label>
+                    <textarea class="register-textarea contacto-textarea-responsive" name="alergias" rows="7" cols="45" placeholder="Describe tus alergias"></textarea>
+                </div>
+                <div class="login-btn">
+                    <input type="submit" id="registrar" class="register-btn-submit" value="Registrar" disabled>
+                    <input onclick="yaTengoCuenta()" type="button" class="register-btn-button" value="Ya tengo cuenta!">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function comprobarUser() {
+            let nombreCogido = [];
+            let nombreUser = '';
+            {% for usuario in usuarios %}
+                    nombreUser = '{{usuario.username}}';
+                    nombreCogido.push(nombreUser.toLocaleLowerCase());
+            {% endfor %}
+            
+            let nombre = $('#username').val();
+            let encontrado = nombreCogido.includes(nombre.toLocaleLowerCase());
+            
+            let nameAlerta = document.getElementById('spanName');
+            
+            if(encontrado == true) {
+                nameAlerta.innerHTML = 'Usuario existente';
+            }else if(encontrado == false) {
+                nameAlerta.innerHTML = '';
+            }
+        }
+        
+        function yaTengoCuenta() {
+            window.location.href = '/login';
+        }
+        
+        function validarDNI(dni) {
+                    
+            let dniVal = document.getElementById('dni').value;
+            let dniLabel = document.getElementById('dni');
+            let dniAlerta = document.getElementById('spanDNI');
+
+            dni = dniVal;
+
+            let numero;
+            let letr;
+            let letra;
+            let expresion_regular_dni;
+
+            expresion_regular_dni = /^\d{8}[a-zA-Z]$/;
+
+            if(expresion_regular_dni.test (dni) == true){
+                numero = dni.substr(0,dni.length-1);
+                letr = dni.substr(dni.length-1,1);
+                numero = numero % 23;
+                letra='TRWAGMYFPDXBNJZSQVHLCKET';
+                letra=letra.substring(numero,numero+1);
+
+                if (letra!=letr.toUpperCase()) {
+                    dniAlerta.innerHTML = 'Dni erroneo, la letra del NIF no se corresponde';
+                    dniLabel.setAttribute('title', 'Dni erroneo, la letra del NIF no se corresponde');
+                }else{
+                    dniAlerta.innerHTML = '';
+                    dniLabel.setAttribute('title', '');
+                    document.getElementById("registrar").disabled = false;
+                }
+            }else{
+               dniAlerta.innerHTML = 'Dni erroneo, formato no válido';
+               dniLabel.setAttribute('title', 'DNI erroeno, formato no válido');
+               //console.log('Dni erroneo, formato no válido');
+           }
+        }
+    </script>
+{% endblock %}

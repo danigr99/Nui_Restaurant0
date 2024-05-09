@@ -1,0 +1,1302 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 30-mar-2020, 5:58:10
+    Author     : Daniel
+*/
+
+html {
+    background-image: url(fondos/restaurantePC.jpg);
+    background-size: all;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    scroll-behavior: smooth;
+    font-family: Arial;
+}
+
+.header {
+    position: fixed;
+    z-index: 999999;
+    display: table;
+    width: 102%;
+    height: 70px;
+    background-color: rgba(66, 206, 245, 1);
+    border-radius: 0px;
+    box-shadow: 0px 0px 10px 1px;
+    margin-left: -1%;
+    margin-top: -9px;
+}
+
+.header-div {
+    display: table-cell;
+    height: auto;
+}
+
+.header-logo {
+    width: 25%;
+}
+
+.header-logo-img {
+    width: 50px;
+    height: auto;
+    margin-top: 8px;
+    margin-left: 40%;
+}
+
+.header-redes {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.header-redes-a {
+    width: 30px;
+    height: 30px;
+    padding-right: 5%;
+    outline: none;
+}
+
+.header-redes-a-menu {
+    background-image: url(fondos/menu.png);
+    width: 30px;
+    height: 30px;
+}
+
+.header-redes-a-img {
+    width: 30px;
+    height: 30px;
+}
+
+.header-login {
+    width: 25%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.header-login-button {
+    margin-left: 40%;
+    outline: none;
+}
+
+.header-login-span {
+    margin-left: 25%;
+    outline: none;
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.header-login-span:hover {
+    color: black;
+    transition: color 0.2s;
+}
+
+.section-login {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 950px;
+    position: fixed;
+    z-index: 999;
+    margin-top: -8px;
+    margin-left: -8px;
+}
+
+.section-login-div1 {
+    background-color: rgba(66, 206, 245, 1);
+    width: 30%;
+    height: 300px;
+    margin-left: 35%;
+    margin-top: 15%;
+    border-radius: 5px 15px 5px 15px;
+    font-size: 20px;
+}
+
+.close {
+    width: 10%;
+    height: 20px;
+    position: relative;
+    float: right;
+    margin-top: 4%;
+    margin-right: -2%;
+}
+
+.close-img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: relative;
+    z-index: 99;
+}
+
+.login-div-datos {
+    width: 70%;
+    height: 120px;
+    float: right;
+    margin-top: 18%;
+    margin-right: 1%;
+}    
+
+.login-datos {
+    width: 90%;
+    height: 45px;
+}
+
+.login-cajas {
+    width: 55%;
+    height: 25px;
+    float: right;
+    margin-top: -2%;
+    color: black;
+    outline: none;
+    border-radius: 5px;
+    border: 3px solid white;
+}
+
+.login-cajas:focus {
+    border-radius: 5x;
+    border: 3px solid #0088ff;
+}
+
+.texto-login {
+    float: left;
+}
+
+.cajaTexto-Form {
+    height: 25px;
+}
+
+.login-btn {
+    position: relative;
+    width: 39%;
+    height: 40px;
+    margin-left: 45%;
+    margin-top: -3%;
+}
+
+.login-btn-input {
+    position: relative;
+    width: 90px;
+    height: 30px;
+    outline: none;
+    border: 2px solid white;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: white;
+    float: right;
+}
+
+.login-btn-input:hover {
+    background-color: rgba(0, 160, 255, 0.7);
+    text-decoration: underline;
+    transition: background-color 0.2s;
+}
+
+.login-btn-input:active {
+    border: 2px solid rgb(0, 160, 255);
+    transform: border 0.2s;
+}
+
+.login-btn-registrate {
+    float: left;
+    margin-right: 10%;
+    font-size: 16px;
+    margin-top: 1%;
+    text-decoration: none;
+    color: black;
+}
+
+.login-btn-registrate:hover {
+    text-decoration: underline;
+}
+
+.login-btn-registrate:visited {
+    color: black;
+}
+
+.register-body {
+    position: fixed;
+    width: 99%;
+    height: 920px;
+    margin: 0% 0% 0% 0%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+.register-body-div {
+    background-color: rgb(66, 206, 245);
+    position: fixed;
+    width: 50%;
+    height: 780px;
+    margin: 85px 0% 0% 25%;
+    border-radius: 7px;
+}
+
+.login-body-div {
+    background-color: rgb(66, 206, 245);
+    position: fixed;
+    width: 50%;
+    height: 550px;
+    margin: 85px 0% 0% 25%;
+    border-radius: 7px;
+}
+
+.register-form {
+    position: relative;
+    font-size: 20px;
+    width: 70%;
+    height: 650px;
+    margin: 50px 0% 0px 15%;
+}
+
+.reservas-form {
+    position: relative;
+    font-size: 20px;
+    width: 70%;
+    height: auto;
+    margin: 50px 0% 0px 15%;
+    padding-top: 50px;
+}
+
+.login-form {
+    position: relative;
+    font-size: 20px;
+    width: 70%;
+    height: 200px;
+    margin: 50px 0% 0px 15%;
+    padding-top: 50px;
+}
+
+.register-form-sexoLabel {
+    position: relative;
+    float: right;
+    margin-right: 15%;
+}
+
+.register-textarea {
+    font-family: 'Arial';
+    position: relative;
+    float: right;
+    resize: none;
+    border-radius: 5px;
+    margin-top: -2%;
+    color: black;
+    outline: none;
+    border: 3px solid white;
+}
+
+.register-textarea:focus {
+    border-radius: 5x;
+    border: 3px solid #0088ff;
+}
+
+.register-datos {
+    width: 90%;
+    height: 45px;
+    margin-top: 15px;
+}
+
+.register-datos-textarea {
+    width: 90%;
+    height: 140px;
+    margin-top: 15px;
+}
+
+.register-cajas {
+    width: 55%;
+    height: 25px;
+    float: right;
+    margin-top: -1%;
+    color: black;
+    outline: none;
+    border-radius: 5px;
+    border: 3px solid white;
+}
+
+.register-cajas:focus {
+    border-radius: 5x;
+    border: 3px solid #0088ff;
+}
+
+.register-btn-submit {
+    position: relative;
+    float: right;
+    width: 90px;
+    height: 30px;
+    outline: none;
+    border: 2px solid white;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: white;
+    margin: 40px -15% 0px 0%;
+}
+
+.añadir-btn {
+    float: none;
+    margin: 15px 0% 0% 0%;
+    width: 120px;
+    height: 40px;
+}
+
+.margin-right {
+    margin: 20px 10% 0px 0%;
+}
+
+.margin-top {
+    margin: 0px 10% 0px 0%;
+}
+
+.register-btn-button {
+    position: relative;
+    float: left;
+    width: 120px;
+    height: 30px;
+    outline: none;
+    border: 2px solid white;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: white;
+    margin: 40px -15% 0px 0%;
+}
+
+.register-btn-submit:hover {
+    background-color: rgba(0, 160, 255, 0.7);
+    text-decoration: underline;
+    transition: background-color 0.2s;
+}
+
+.register-btn-button:hover {
+    background-color: rgba(0, 160, 255, 0.7);
+    text-decoration: underline;
+    transition: background-color 0.2s;
+}
+
+.register-btn-submit:active {
+    border: 2px solid rgb(0, 160, 255);
+    transform: border 0.2s;
+}
+
+.resgister-checkbox {
+    position: relative;
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.aside-menu {
+    position: fixed;    
+    background-color: rgba(66, 206, 245, 0.7);
+    width: 10%;
+    height: 840px;
+    margin-top: 70px;
+    margin-left: -8px;
+    color: white;
+    text-align: center;
+}
+
+.aside-menu-div {
+    position: relative;
+    width: 70%;
+    height: 600px;
+    margin-top: 120px;
+}
+
+.aside-menu-div-a {
+    position: relative;
+    text-align: center;
+    width: 80%;
+    height: 30px;
+    margin-left: 15%;
+    margin-top: 60px;
+    padding-top: 15px;
+}
+
+.aside-menu-a {
+    
+    position: relative;
+    margin-top: 60px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 2px solid white;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;   
+}
+
+.aside-menu-a:visited {
+    text-decoration: none;
+}
+
+.aside-menu-a:active {
+    text-decoration: underline;
+}
+
+.aside-menu-a:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: background-color 0.2s;
+}
+
+.aside-menu-div-a:active {
+    text-decoration: underline;
+}
+
+.body-main {
+    position: relative;
+    float: right;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 90%;
+    height: auto;
+    margin-top: 70px;
+    padding-bottom: 25px;
+    color: white;
+}
+
+.body-section {
+    font-size: 18px;
+    position: relative;
+    background-color: rgba(66, 206, 245, 0.9);
+    width: 80%;
+    height: 400px;
+    margin-left: 10%;
+    margin-top: 20px;
+}
+
+
+.body-section-reservas {
+    font-size: 18px;
+    position: relative;
+    background-color: rgba(66, 206, 245, 0.9);
+    width: 80%;
+    height: auto;
+    margin-left: 10%;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.body-section-div {
+    text-align: center;
+    color: white;
+    width: 50%;
+    height: 400px;
+    margin-left: 25%;
+}
+
+.div-section-titulo {
+    width: auto;
+    height: 40px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.body-section-ubicacion {
+    font-size: 18px;
+    position: relative;
+    background-color: rgba(66, 206, 245, 0.9);
+    width: 80%;
+    height: 700px;
+    margin-left: 10%;
+    margin-top: 20px;
+}
+
+.body-section-menus {
+    font-size: 18px;
+    position: relative;
+    background-color: rgba(66, 206, 245, 0.9);
+    width: 80%;
+    height: auto;
+    margin-left: 10%;
+    margin-top: 20px;
+    padding-bottom: 40px;
+}
+
+.body-section-div-ubicacion {
+    text-align: center;
+    color: white;
+    width: 100%;
+    height: 700px;
+}
+
+.img-ubicacion {
+    width: 900px;
+    height: 500px;
+}
+
+.img-ubicacion-responsive {
+    display: none;
+    text-decoration: underline;
+    cursor: pointer;
+    color: white;
+}
+
+.img-ubicación-responsive:hover {
+    color: black;
+    transition: color 0.2s;
+}
+
+.img-ubicacion:hover {
+    cursor: zoom-in;
+}
+
+.card-menus {
+    display: inline-block;
+    width: 250px;
+    height: 400px;
+    border: 2px solid white;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 45px;
+    background-image: linear-gradient(#42cef5, #2b7d94);
+    box-shadow: 8px 8px 20px black;
+}
+
+.card-categorias {
+    display: inline-block;
+    width: 250px;
+    height: 200px;
+    border: 2px solid white;
+    text-align: center;
+    margin-left: 10%;
+    margin-top: 45px;
+    background-image: linear-gradient(#42cef5, #2b7d94);*/
+    box-shadow: 8px 8px 20px black;
+    outline: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+.card-categorias:focus {
+    outline: none;
+}
+
+.card-productos {
+    display: inline-grid;
+    width: 250px;
+    height: 360px;
+    border: 2px solid white;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 45px;
+    background-image: linear-gradient(#42cef5, #2b7d94);
+    box-shadow: 8px 8px 20px black;
+    outline: none;
+    cursor: default;
+}
+
+.div-productos {
+    width: 100%;
+    height: auto;
+}
+
+.section-noUserReservas {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 88%;
+    height: 870px;
+    position: fixed;
+    z-index: 99;
+    margin-top: -50px;
+    margin-left: -8%;
+}
+
+.menu-navegacion {
+    display: none;
+}
+
+.h4-card {
+    margin-bottom: -10px;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    text-decoration: underline;
+    cursor: default;
+}
+
+.reservas-select {
+    width: 56%;
+    height: 35px;
+}
+
+h1 {
+    text-decoration: underline;
+    cursor: default;
+}
+
+h2 {
+    text-decoration: underline;
+    cursor: default;
+}
+
+.p-card-menus {
+    width: auto;
+    height: 25px;
+    font-size: 18px;
+    cursor: default;
+}
+
+.p-card {
+    width: auto;
+    height: 65px;
+    font-size: 18px;
+    cursor: default;
+}
+
+.p-card-nombre {
+    width: auto;
+    height: 20px;
+    font-size: 18px;
+    cursor: default;
+}
+
+.div-btn-volver {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    margin: 20px 0% -20px 5%;
+    float: left;
+}
+
+.btn-volver {
+    width: 110px;
+    height: 40px;
+    outline: none;
+    border: 2px solid white;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.btn-volver:hover {
+    background-color: rgba(0, 160, 255, 0.7);
+    text-decoration: underline;
+    transition: background-color 0.2s;
+}
+
+.noUserError {
+    width: 30%;
+    height: auto;
+    text-align: center;
+}
+
+.noUserReservas-texto {
+    text-align: center;
+    display: table;
+}
+
+.spanNoUser-reservas {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    height: auto;
+    cursor: default;
+}
+
+.aNoUser-reservas {
+    display: table-row;
+    text-decoration: underline;
+    cursor: pointer;
+    color: white;
+    height: 80px;
+}
+
+.aLogin-div {
+    margin: 60px 10% 0px 0%;
+    float: right;
+    width: 50%;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.aLogin {
+    float: right;
+    text-decoration: underline;
+    cursor: pointer;
+    color: white;
+    margin-left: 30px;
+}
+
+.aLogin:hover {
+    color: black;
+    transition: color 0.2s;
+}
+
+.aLogout {
+    text-decoration: underline;
+    cursor: pointer;
+    color: white;
+    margin-left: 15px;
+}
+
+.aLogout:hover {
+    color: black;
+    transition: color 0.2s;
+}
+
+.aNoUser-reservas:hover {
+    color: black;
+    transition: color 0.2s;
+}
+
+.btnOculto {
+    display: none;
+}
+
+.usuarioIncorrecto {
+    color: #ffff00;
+    font-size: 18px;
+    text-align: center;
+    margin-top: -50px;
+    margin-bottom: 70px;
+    height: 21px;
+}
+
+.usuarioCorrecto {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 85px;
+    margin-bottom: 70px;
+    height: 21px;
+    cursor: default;
+}
+
+.body-section-guardado {
+    font-size: 18px;
+    position: relative;
+    background-color: rgba(66, 206, 245, 0.9);
+    width: 80%;
+    height: 400px;
+    margin-left: 10%;
+    margin-top: 20px;
+    border-radius: 7px;
+}
+
+.aGuardado-div {
+    margin: 130px 0% 0px 0%;
+    float: right;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.aGuardado {
+    text-decoration: underline;
+    cursor: pointer;
+    color: white;
+}
+
+.aGuardado:hover {
+    color: black;
+    transition: color 0.2s;
+}
+
+.reservaUsuario {
+    display: table;
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+}
+
+.ul-reservas {
+    margin: 0% 0% 0% 0%;
+    padding: 0% 0% 10px 0%;
+    border-bottom: 1px solid black;
+}
+
+.liReservas {
+    display: inline;
+    margin-left: 35%;
+}
+
+.liReservas-fecha {
+    margin: 0% 0% 0% 2% !important;
+}
+
+.liReservas-menu {
+    padding: 0% 0% 0% 3% !important;
+}
+
+.liReservas-nPersonas {
+    padding: 0% 0% 0% 0% !important;
+}
+
+.spanReservaUsuario {
+    display: table-cell;
+    text-align: center;
+    width: 300px !important;
+    margin-top: 5px;
+}
+
+.spanReservaUsuario-fecha {
+    float: left !important;
+    text-align: left;
+}
+
+.spanReservaUsuario-nPersonas {
+    float: right !important;
+    text-align: right;
+    padding-right: 20%;
+}
+
+.spanReservaUsuario-menu {
+    padding-right: 25px;
+}
+
+.menu-productos {
+    display: table;
+    font-size: 18px;
+    position: relative;
+    background-color: rgba(66, 206, 245, 0.9);
+    width: 80%;
+    height: 55px;
+    margin-left: 10%;
+    margin-top: 20px;
+}
+
+.productos-checkbox {
+    display:table-cell;
+    width: 17%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.textarea-height {
+    height: 120px;
+}
+
+.footer {
+    position: fixed;
+    z-index: 999999;
+    display: table;
+    width: 102%;
+    height: 70px;
+    background-color: rgba(66, 206, 245, 1);
+    border-radius: 0px;
+    box-shadow: 0px 0px 10px 1px;
+    margin-left: -1%;
+    margin-top: 860px;
+}
+
+.header-login-span-responsive {
+    display: none;
+}
+
+/*MOVILES*/
+@media only screen and (min-width:320px) and (max-width:480px){
+    .header {
+       margin-left: -3%;
+       height: 85px;
+    }
+    
+    .aside-menu {
+        display: none;
+        width: 150px;
+    }
+    
+    .aside-menu-responsive {
+        position: fixed;    
+        background-color: rgba(66, 206, 245, 0.7);
+        width: 100%;
+        height: auto;
+        margin-top: 70px;
+        margin-left: -8px;
+        color: white;
+        text-align: center;
+    }
+    
+    .aside-menu-div {
+        width: 90%;
+    }
+    
+    .header-logo-img {
+        margin-left: 10%;
+    }
+    
+    .header-redes {
+        width: 55%;
+    }
+    
+    .header-login {
+        width: 15%;
+    }
+    
+    .header-login-button {
+        margin-left: 10%;
+    }
+    
+    .body-main {
+        width: 100%;
+    }
+    
+    .body-section {
+        width: 100%;
+        margin-left: 0%;
+        height: 520px;
+    }
+    
+    .body-section-div {
+        width: 100%;
+        margin-left: 0%;
+    }
+    
+    .body-section-ubicacion {
+        width: 100%;
+        margin-left: 0%;
+        height: 230px;
+    }
+    
+    .body-section-div-ubicacion {
+        height: 230px;
+    }
+    
+    .body-section-menus {
+        width: 100%;
+        margin-left: 0%;
+    }
+    
+    .menu-productos {
+        width: 100%;
+        margin-left: 0%;
+        display: table;
+    }
+    
+    .card-productos {
+        margin-left: 10%;
+    }
+    
+    .productos-checkbox {
+        display: table-row;
+        width: 100%;
+        height: 32px;
+    }
+    
+    .section-noUserReservas {
+        width: 106%;
+    }
+    
+    .section-login-div1 {
+        width: 91%;
+        margin-left: 7%; 
+    }
+    
+    .reservas-form-ocultar {
+        display:none;
+    }
+    
+    .body-section-responsive {
+        height: 700px;
+    }
+    
+    .reservas-form-responsive {
+        width: 95%;
+        margin: 50px 0% 0px 5%;
+    }
+    
+    .div-section-titulo {
+        height: 70px;
+    }
+    
+    .img-ubicacion {
+        display: none;
+    }
+    
+    .img-ubicacion-responsive {
+        display: inherit;
+    }
+    
+    .card-menus {
+        margin-left: 10%;
+    }
+    
+    .texto-login-responsive {
+        margin-left: 30%;
+    }
+    
+    .contacto-textarea-responsive {
+        margin-top: 5%; 
+        width: 100%;
+    }
+    
+    .contacto-datos-dni-responsive {
+        margin-bottom: 60px;
+    }
+    
+    .login-body-div {
+        margin: 85px 0% 0% 3%;
+        width: 95%;
+    }
+    
+    .register-body-div {
+        margin: 0px 0% 0% 3%;
+        width: 95%;
+        height: 1025px;
+        position: initial;
+        padding-top: 1px; 
+    }
+    
+    .register-form {
+        margin: 50px 0% 0% 5%;
+        width: 100%;
+    }
+    
+    .register-datos-responsive {
+        text-align: center;
+    }
+    
+    .productos-datos-responsive {
+        width: 100%;
+        margin-top: 30px;  
+    }
+    
+    .productos-textarea-responsive {
+        margin-top: 5%; 
+        width: 100%;
+        margin-right: -4%;
+    }
+    
+    .register-form-sexoLabel {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .texto-login {
+        margin-left: 15%;
+        text-align: center;
+    }
+    
+    .register-cajas {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 17%;
+    }
+    
+    .aLogin-div {
+        width: 80%;
+        margin-top: 12px;
+    }
+    
+    .aLogin-responsive {
+        margin-bottom: 15px;
+    }
+    
+    .header-login-span {
+        display: none;
+    }
+    
+    .usuarioCorrecto-responsive {
+        width: 90%;
+    }
+    
+    .header-login-span-responsive {
+        display: initial;
+        margin: 0%;
+    }
+    
+    .login-form {
+        width: 100%;
+        margin: 50px 0% 0px 5%;
+    }
+    
+    .register-body {
+        width: 106%;
+        margin: 0% 0% 0% -3%;
+        position: initial;
+    }
+    
+    .p-index {
+        font-size: 16px;
+        height: auto;
+    }
+    
+    .menu-form-responsive {
+        width: 100%;
+        margin: 0% 0% 0% 3%;
+        padding: 0%;
+    }
+    
+    .menuAdmin {
+        height: 490px;
+    }
+    
+    .menuAdmin-productos {
+        height: 650px;
+    }
+    
+    .menu-navegacion {
+        display: initial;
+    }
+    
+    .body-section-reservas {
+        width: 100%;
+        margin-left: 0%;
+    }
+    
+    .liReservas-menu {
+        display: none;
+    }
+    
+    .liReservas {
+        margin-left: 25%;
+    }
+    
+    .spanReservaUsuario-menu {
+        display: none;
+    }
+    
+    .spanReservaUsuario {
+        width: 105px !important;
+    }
+}
+
+@media only screen and (min-width:380px) and (max-width:480px){
+    .card-menus {
+        margin-left: 20%;
+    }
+    
+    .card-productos {
+        margin-left: 20%;
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:1024px) {
+    .body-main {
+        width: 80%;
+    }
+    
+    .body-section {
+        width: 95%;
+        margin-left: 3%;
+        height: auto;
+        padding-bottom: 10px;
+    }
+    
+    .body-section-div {
+        width: 90%;
+        margin-left: 5%;
+        height: auto;
+    }
+    
+    .body-section-ubicacion {
+        width: 95%;
+        margin-left: 3%;
+        height: auto;
+        padding-bottom: 10px;
+    }
+    
+    .img-ubicacion {
+        width: 550px;
+        height: 315px;
+    }
+    
+    .body-section-div-ubicacion {
+        height: auto;
+    }
+    
+    .aside-menu {
+        width: 20%;
+        height: 750px;
+    }
+    
+    .body-section-menus {
+        width: 95%;
+        margin-left: 3%; 
+    }
+    
+    .card-menus {
+        margin-left: 3%;
+    }
+    
+    .section-login-div1 {
+        width: 60%;
+        margin-left: 20%;
+    }
+    
+    .reservas-form-ocultar {
+        display: none;
+    }
+    
+    .ocultar-div-reservas {
+        display:none;
+    }
+    
+    .contacto-textarea-div-responsive {
+        width: 100%;
+    }
+    
+    .section-noUserReservas {
+        width: 78%;
+        margin-left: -2%;
+        height: auto;
+        padding-bottom: 10px;
+    }
+    
+    .contacto-textarea-responsive {
+        width: 70%;
+    }
+    
+    .contacto-form-responsive {
+        height: 450px !important;
+    }
+    
+    .login-body-div {
+        width: 80%;
+        margin: 85px 0% 0% 10%;
+    }
+    
+    .register-body-div {
+        width: 90%;
+        margin: 20px 0% 0% 5%;
+    }
+    
+    .register-form {
+        width: 80%;
+        margin: 50px 0% 0px 15%;
+    }
+    
+    .card-productos {
+        margin-left: 3%;
+    }
+    
+    .header-login-span {
+        margin-left: 0%;
+    }
+    
+    .reservas-form {
+        width: 95%;
+        margin: 50px 0% 0px 3%;
+        height: 250px;
+    }
+    
+    .reservas-form-admin {
+        height: auto;
+    }
+    
+    .body-section-reservas {
+        width: 95%;
+        margin-left: 3%;
+    }
+    
+    .misReservas-responsive {
+        width: 95%;
+        margin: 50px 0% 0px 3%;
+    }
+    
+    .liReservas {
+        margin-left: 25%;
+    }
+    
+    .spanReservaUsuario {
+        width: 200px !important;
+    }
+    
+    .contacto-form-responsive {
+        
+    }
+}

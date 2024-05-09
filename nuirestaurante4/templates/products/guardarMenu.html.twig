@@ -1,0 +1,25 @@
+{% extends 'base.html.twig'%}
+
+{% block title %}
+    Menú guardado con exito!   
+{% endblock %}
+
+{% block header %}    
+{% endblock %}
+
+{% block aside %}    
+{% endblock %}
+
+{% block body %}
+    <div class="register-body">
+        <div class="body-section-guardado">
+            <div class="div-section-titulo">
+            <h1>Su menú se ha guardado con exito!</h1>
+            </div>
+
+            <div class="aGuardado-div">
+                <a href="{{path('menus')}}" class="aGuardado">Volver a menús</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

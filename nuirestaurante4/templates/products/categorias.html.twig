@@ -1,0 +1,115 @@
+{# empty Twig template #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="body-main">
+        
+        {% if rol == 'admin' %}
+            <div class="body-section-menus">
+                
+                <div class="div-section-titulo">
+                    <input type="submit" onclick="mostrarMenusAdmin()" class="register-btn-submit añadir-btn" value="Añadir Producto">
+                </div>
+                
+                <div id="menuAdmin" class="menuAdmin-productos" style="display: none">
+                    <div class="div-section-titulo">
+                        <h2>Añade un nuevo producto</h2>
+                    </div>
+
+                    <form action="{{ path ('guardarProducto')}}" name="guardarCategorias" method="POST" class="reservas-form menu-form-responsive reservas-form-admin">
+                        
+                        <div class="register-datos productos-datos-responsive">
+                            <label class="texto-login">Elige una categoría:</label>
+                            <select class="register-cajas reservas-select" name="categoria" required>
+                                {% for categoria in categorias%}
+                                    <option>
+                                        {{categoria.nombre}}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <div class="register-datos">
+                            <label class="texto-login">Nombre:</label>
+                            <input type="text" name="nombre" class="register-cajas cajaTexto-Form" maxlength="24" placeholder="Nombre" required/>
+                        </div>
+                            
+                        <div class="register-datos textarea-height">
+                            <label class="texto-login">Alergenos:</label>
+                            <textarea class="register-textarea productos-textarea-responsive contacto-textarea-responsive" name="alergenos" rows="7" cols="65" placeholder="Alergenos del producto"></textarea>
+                        </div>
+                            
+                        <div class="register-datos textarea-height">
+                            <label class="texto-login">Descripción:</label>
+                            <textarea class="register-textarea productos-textarea-responsive contacto-textarea-responsive" name="descripcion" rows="7" cols="65" placeholder="Descripción"></textarea>
+                        </div>
+
+                        <div class="register-datos">
+                            <label class="texto-login">Precio:</label>
+                            <input type="number" name="precio" class="register-cajas cajaTexto-Form" step="1" max="99" min="1" placeholder="0" required/>
+                        </div>
+
+                        <input type="submit" class="register-btn-submit margin-top" value="Guardar">
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+        
+            <div class="menu-productos">
+                <div class="productos-checkbox">
+                    <input onclick="elegirCategoria()" type="radio" class="register-checkbox" id="todos" name="opcion" value="" checked>
+                        <label for="todos">Mostrar todos</label>
+                </div>
+                
+                <div class="productos-checkbox">
+                    <input onclick="elegirCategoria()" type="radio" class="register-checkbox" id="bebidas" name="opcion" value="">
+                        <label for="bebidas">Bebidas</label>
+                </div>
+
+                <div class="productos-checkbox">
+                    <input onclick="elegirCategoria()" type="radio" class="register-checkbox" id="entrantes" name="opcion" value="">
+                        <label for="entrantes">Entrantes</label>
+                </div>
+
+                <div class="productos-checkbox">
+                    <input onclick="elegirCategoria()" type="radio" class="register-checkbox" id="primerPlato" name="opcion" value="">
+                        <label for="primerPlato">Primeros Platos</label>
+                </div>
+
+                <div class="productos-checkbox">
+                    <input onclick="elegirCategoria()" type="radio" class="register-checkbox" id="segundoPlato" name="opcion" value="">
+                        <label for="segundoPlato">Segundos Platos</label>
+                </div>
+                
+                <div class="productos-checkbox">
+                    <input onclick="elegirCategoria()" type="radio" class="register-checkbox" id="postres" name="opcion" value="">
+                        <label for="postres">Postres</label>
+                </div>
+            </div>
+        
+            {% for categoria in categorias %}
+                <div id="categoria{{categoria.id}}">
+                    <div class="body-section-menus">
+                        <div class="div-section-titulo">
+                            <h2>{{categoria.nombre}} ({{categoria.cantidadProductos}})</h2>
+                        </div>
+                        
+                        <div class="div-productos">
+                            {% for producto in productos %}
+                                {% if producto.idCategoria.id == categoria.id %}
+                                    <div class="card-productos">
+                                        <h4 class="h4-card">Nombre:</h4>
+                                        <p class="p-card p-card-nombre">{{producto.nombre}}</p>
+                                        <h4 class="h4-card">Descripción:</h4>
+                                        <p class="p-card">{{producto.descripcion}}</p>
+                                        <h4 class="h4-card">Alergenos:</h4>
+                                        <p class="p-card">{{producto.alergenos}}</p>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inicia Sesion{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block aside %}
+{% endblock %}
+
+{% block body %}
+    <div class="register-body">
+        <div class="login-body-div">
+            
+            <div class="div-section-titulo">
+                {% if app.user %}
+                    <h2>Sesión iniciada</h2>
+                    <h1 class="h3 mb-3 font-weight-normal"></h1>
+                {% else %}
+                    <h2>Por favor, inicie sesión</h2>
+                    <h1 class="h3 mb-3 font-weight-normal"></h1>
+                {% endif %}
+                
+            </div>
+            
+            <form method="post" class="login-form">
+                {% if error %}
+                    <div class="usuarioIncorrecto">{{ error.messageKey|trans(error.messageData, 'security') }}{#* Contraseña o Usuario incorrectos *#}</div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="usuarioCorrecto-responsive">
+                        <div class="usuarioCorrecto">
+                            Has iniciado sesión como {{ app.user.username }}.
+                            <a href="{{ path('app_logout') }}" class="aLogout">Logout</a>
+                        </div>
+                        
+                        <div class="usuarioCorrecto">
+                            <a href="{{ path('index') }}" class="aLogout">Ir al inicio</a>
+                        </div>
+
+                        {% if rol == 'admin' %}
+                            <div class="usuarioCorrecto">
+                                Usted es un administrador.
+                                <a href="{{path('registrar')}}" class="aLogout">Registrar a un usuario</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                {% else %}
+                    <div class="register-datos">
+                        <label for="inputUsername" class="texto-login">Usuario:</label>
+                        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="register-cajas cajaTexto-Form" placeholder="Usuario" required autofocus>
+                    </div>
+
+                    <div class="register-datos">
+                        <label for="inputPassword" class="texto-login">Contraseña:</label>
+                        <input type="password" name="password" id="inputPassword" class="register-cajas cajaTexto-Form" placeholder="Contraseña" required>
+                    </div>
+                    
+                    <button class="register-btn-submit margin-right" type="submit">Loguear</button>
+                    <br><br><br><br>
+                    <div class="aLogin-div">
+                        <a href="{{path('index')}}" class="aLogin aLogin-responsive">Volver al inicio</a>
+                        <a href="{{path('registrar')}}" class="aLogin">Registrate</a>
+                    </div>
+                {% endif %}
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                {#
+                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                    See https://symfony.com/doc/current/security/remember_me.html
+
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" name="_remember_me"> Remember me
+                        </label>
+                    </div>
+                #}
+            </form>
+        </div>
+    </div>
+{% endblock %}

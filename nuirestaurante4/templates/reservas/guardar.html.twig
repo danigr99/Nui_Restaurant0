@@ -1,0 +1,27 @@
+{% extends 'base.html.twig'%}
+
+{% block title %}
+    <title>
+        Reserva realizada!
+    </title>
+{% endblock %}
+
+{% block header %}    
+{% endblock %}
+
+{% block aside %}    
+{% endblock %}
+
+{% block body %}
+    <div class="register-body">
+        <div class="body-section-guardado">
+            <div class="div-section-titulo">
+            <h1>Su reserva se ha realizado con exito</h1>
+            </div>
+
+            <div class="aGuardado-div">
+                <a href="{{path('reservas')}}" class="aGuardado">Volver a reservas</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

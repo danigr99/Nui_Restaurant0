@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="body-main">
+        <div class="body-section">
+            {% if (noUser == '') or (noUser == 'Debe estar logueado para poder reservar') %}
+                <section class="section-noUserReservas">
+                    <div class="section-login-div1 noUserReservas-texto">
+                        <span class="spanNoUser-reservas">Debe estar logueado para poder hacer reservas</span>
+                        <a href="{{path('registrar')}}" class="aNoUser-reservas">Quiero registrarme!</a>
+                        <a href="{{path('app_login')}}" class="aNoUser-reservas">Ya tengo una cuenta</a>
+                    </div>
+                </section>
+                    
+                <div class="ocultar-div-reservas">
+                    <div class="div-section-titulo">
+                        <h2>Haga su reversa para un momento especial</h2>
+                    </div>
+
+                    <div class="reservas-form reservas-form-ocultar">
+                        <div class="register-datos">
+                            <label class="texto-login">Elige tu menú:</label>
+                            <select class="register-cajas reservas-select">
+                                <option selected="true">Elige el menú</option>
+                            </select>
+                        </div>
+
+                        <div class="register-datos">
+                            <label class="texto-login">Fecha: *</label>
+                            <input type="date" name="date" class="register-cajas cajaTexto-Form" required>
+                        </div>
+
+                        <div class="register-datos">
+                            <label class="texto-login">Número de personas: *</label>
+                            <input class="register-cajas cajaTexto-Form" placeholder="1" required/>
+                        </div>
+                        <input type="button" class="register-btn-submit margin-right" value="Reservar">
+                    </div>
+                </div>
+            {% else %}
+                <div class="div-section-titulo">
+                    <h2>Haga su reversa para un momento especial</h2>
+                </div>
+                <form action="{{ path ('reservaGuardada')}}" name="reservaGuardada" method="POST" class="reservas-form reservas-form-responsive reservas-form-height">
+                    <div class="register-datos">
+                        <label class="texto-login">Elige tu menú:</label>
+                        <select class="register-cajas reservas-select" name="menu" required>
+                            <option selected="true">Elige el menú</option>
+                            {% for menu in menus%}
+                                <option>
+                                    {{menu.primerPlato}}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="register-datos">
+                        <label class="texto-login">Fecha:</label>
+                        <input type="date" name="date" class="register-cajas cajaTexto-Form" required>
+                    </div>
+                    
+                    <div class="register-datos">
+                        <label class="texto-login">Número de personas:</label>
+                        <input id="npersonas" oninput="numPersonas()" type="number" name="personas" class="register-cajas cajaTexto-Form" step="1" max="8" min="1" placeholder="0" required/>
+                        <input class="btnOculto" id="menuId" type="text" name="menuId" value="{{usuario.nombre}}" required/>
+                    </div>
+                    <input type="submit" class="register-btn-submit margin-right" value="Reservar">
+                </form>
+                    
+            {% endif %}
+        </div>
+        
+        {% if (noUser == '') or (noUser == 'Debe estar logueado para poder reservar') %}
+            
+        {% else %}
+            <div class="body-section-reservas">
+                <div class="div-section-titulo">
+                    <h2>Mis reservas</h2>
+                </div>
+                
+                <div class="reservas-form reservas-form-responsive misReservas-responsive">
+                    
+                    <ul class="ul-reservas">
+                        <li class="liReservas liReservas-fecha">Fecha</li>
+                        <li class="liReservas liReservas-menu">Menú</li>
+                        <li class="liReservas liReservas-nPersonas">Nº Personas</li>
+                    </ul>
+                    
+                    {% for reserva in reservas %}
+                        <div class="reservaUsuario">
+                            <span class="spanReservaUsuario spanReservaUsuario-fecha">{{reserva.fecha}}</span>
+                            <span class="spanReservaUsuario spanReservaUsuario-menu">
+                                {% if reserva.menu == '' %}
+                                    Reserva sin menú
+                                {% else %}
+                                    {{reserva.menu}}
+                                {% endif %}
+                                
+                            </span>
+                            <span class="spanReservaUsuario spanReservaUsuario-nPersonas">{{reserva.numPersonas}}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+        
+    </div>
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="body-main">
+        
+        {% if rol == 'admin' %}
+            <div class="body-section-menus section-menus-admin-responsive">
+                
+                <div class="div-section-titulo">
+                    <input type="submit" onclick="mostrarMenusAdmin()" class="register-btn-submit añadir-btn" value="Añadir Menú">
+                </div>
+                
+                <div id="menuAdmin" class="menuAdmin" style="display: none">
+                    <div class="div-section-titulo">
+                        <h2>Crea un nuevo menú</h2>
+                    </div>
+
+                    <form action="{{ path ('guardarMenus')}}" name="reservaGuardada" method="POST" class="reservas-form menu-form-responsive reservas-form-admin">
+                        <div class="register-datos">
+                            <label class="texto-login">Elige un entrante:</label>
+                            <select class="register-cajas reservas-select" name="entrante" required>
+                                {% for producto in productos%}
+                                    {% if producto.idCategoria.id == 1 %}
+                                        <option>
+                                            {{producto.nombre}}
+                                        </option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="register-datos">
+                            <label class="texto-login">Elige un primer Plato:</label>
+                            <select class="register-cajas reservas-select" name="primerPlato" required>
+                                {% for producto in productos%}
+                                    {% if producto.idCategoria.id == 3 %}
+                                        <option>
+                                            {{producto.nombre}}
+                                        </option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="register-datos">
+                            <label class="texto-login">Elige un segundo Plato:</label>
+                            <select class="register-cajas reservas-select" name="segundoPlato" required>
+                                {% for producto in productos%}
+                                    {% if producto.idCategoria.id == 4 %}
+                                        <option>
+                                            {{producto.nombre}}
+                                        </option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="register-datos">
+                            <label class="texto-login">Elige un Postre:</label>
+                            <select class="register-cajas reservas-select" name="postre" required>
+                                {% for producto in productos%}
+                                    {% if producto.idCategoria.id == 5 %}
+                                        <option>
+                                            {{producto.nombre}}
+                                        </option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="register-datos">
+                            <label class="texto-login">Precio:</label>
+                            <input type="number" name="precio" class="register-cajas cajaTexto-Form" step="1" max="99" min="1" placeholder="0" required/>
+                        </div>
+
+                        <input type="submit" class="register-btn-submit margin-top" value="Guardar">
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+        
+        <div class="body-section-menus">
+            <div class="div-section-titulo">
+                <h2>Nuestros menús destacados</h2>
+            </div>
+            
+            {% for menu in menus %}
+                <div class="card-menus">
+                    <h4 class="h4-card">Entrante</h4>
+                    <p class="p-card-menus">{{menu.entrante}}</p>
+
+                    <h4 class="h4-card">Primer plato</h4>
+                    <p class="p-card-menus">{{menu.primerPlato}}</p>
+
+                    <h4 class="h4-card">Segundo plato</h4>
+                    <p class="p-card-menus">{{menu.segundoPlato}}</p>
+
+                    <h4 class="h4-card">postre</h4>
+                    <p class="p-card-menus">{{menu.postre}}</p>
+
+                    <h4 class="h4-card">coste</h4>
+                    <p class="p-card-menus">{{menu.coste}}€</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

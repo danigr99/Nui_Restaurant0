@@ -1,0 +1,25 @@
+{% extends 'base.html.twig'%}
+
+{% block title %}
+    Producto guardado con exito!   
+{% endblock %}
+
+{% block header %}    
+{% endblock %}
+
+{% block aside %}    
+{% endblock %}
+
+{% block body %}
+    <div class="register-body">
+        <div class="body-section-guardado">
+            <div class="div-section-titulo">
+            <h1>Su producto se ha guardado con exito!</h1>
+            </div>
+
+            <div class="aGuardado-div">
+                <a href="{{path('categorias')}}" class="aGuardado">Volver a productos</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <title>{% block title %}Bienvenido{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
+        {% endblock %}
+        {% block scripts %}
+            <script
+                src="https://code.jquery.com/jquery-3.5.1.js"
+                integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+                crossorigin="anonymous"></script>
+        {% endblock %}
+    </head>
+    <body>
+        {% block header %}
+            
+            <header class="header">
+                <div class="header-div header-logo">
+                    <a href="{{path('index')}}#presentacion">
+                        <img class="header-logo-img" src="images/nui-logo.png">
+                    </a>
+                </div>
+                <div class="header-div header-redes">
+                    <a class="header-redes-a menu-navegacion" href="{{path('navegacion')}}"><img class="header-redes-a-img" src="images/menu.png" alt="AbrirMenu"></a>
+                    <a class="header-redes-a" href="https://www.instagram.com/nui_mura/?hl=es" target="_blank"><img class="header-redes-a-img" src="images/instagram.png" alt="Instagram"></a>
+                    <a class="header-redes-a" href="https://es-es.facebook.com/nuirestaurante" target="_blank"><img class="header-redes-a-img" src="images/facebook.png" alt="Facebook"></a>
+                    <a class="header-redes-a" href="https://www.tripadvisor.es/Restaurant_Review-g187441-d14659367-Reviews-Nui_Restaurante-Granada_Province_of_Granada_Andalucia.html" target="_blank"><img class="header-redes-a-img" src="images/tripadvisor2.png" alt="Tripadvisor"></a>
+                </div>
+                <div class="header-div header-login">
+                    {% if (noUser == '') or (noUser == 'Debe estar logueado para poder reservar') %}
+                        <a href="{{path('app_login')}}" class="header-redes-a header-login-button">
+                            <img class="header-redes-a-img" src="images/user.png" alt="inicio sesion">
+                        </a>
+                    {% elseif (noUser != '') or (noUser != 'Debe estar logueado para poder reservar') %}
+                        <a href="{{path('app_login')}}" class="header-redes-a p-card">
+                            <span class="header-login-span">Logueado como: {{noUser}}</span>
+                            <span class="header-login-span header-login-span-responsive">{{noUser}}</span>
+                        </a> 
+                    {% endif %}
+                </div>
+            </header>
+        {% endblock %}
+        
+        {% block aside %}
+            <aside class="aside-menu">
+                <div class="aside-menu-div">
+                    <div class="aside-menu-div-a">
+                        <a href="{{path('menus')}}" class="aside-menu-a">Menús</a>
+                    </div>
+                    
+                    <div class="aside-menu-div-a">
+                        <a href="{{path('categorias')}}" class="aside-menu-a">Productos</a>
+                    </div>
+                    
+                    <div class="aside-menu-div-a">
+                        <a href="{{path('reservas')}}" class="aside-menu-a">Reservas</a>
+                    </div>
+                    
+                    <div class="aside-menu-div-a">
+                        <a href="{{path('contacto')}}" class="aside-menu-a">Contacto</a>
+                    </div>
+                    
+                    <div class="aside-menu-div-a">
+                        <a href="{{path('index')}}#ubicacion" class="aside-menu-a">Ubicación</a>
+                    </div>
+                </div>
+            </aside>
+        {% endblock %}
+        
+        {% block body %}
+            
+        {% endblock %}
+        
+        {#{% block footer %}
+            <footer class="footer">
+                <div class="header-div header-logo">
+                    <a href="{{path('index')}}#presentacion">
+                        <img class="header-logo-img" src="images/nui-logo.png">
+                    </a>
+                </div>
+                <div class="header-div header-redes">
+                    <a class="header-redes-a" href="https://www.instagram.com/nui_mura/?hl=es" target="_blank"><img class="header-redes-a-img" src="images/instagram.png" alt="Instagram"></a>
+                    <a class="header-redes-a" href="https://es-es.facebook.com/nuirestaurante" target="_blank"><img class="header-redes-a-img" src="images/facebook.png" alt="Facebook"></a>
+                    <a class="header-redes-a" href="https://www.tripadvisor.es/Restaurant_Review-g187441-d14659367-Reviews-Nui_Restaurante-Granada_Province_of_Granada_Andalucia.html" target="_blank"><img class="header-redes-a-img" src="images/tripadvisor2.png" alt="Tripadvisor"></a>
+                </div>
+               
+            </footer>
+        {% endblock %}#}
+    </body>
+        {% block javascripts %}
+            <script>
+                /*Muestra u oculta div para inicio de sesión*/
+                let mostrar = 'display: ';
+                let ocultar = 'display: none';
+
+                function abrirLogin() {
+                    document.getElementById('login').style = 'display: initial';
+                }
+
+                function cerrarLogin() {
+                    
+                    document.getElementById('login').style = ocultar;
+                    //}
+                }         
+                
+                function ampliarUbi() {
+                    window.open('images/Ubicacion2.jpg', '_blank');
+                }
+                
+    {#function mostrarProductos(id) {
+                    window.location.href = '{{path('productos')}}';
+                }#}
+                
+                function numPersonas() {
+                    if(document.getElementById('npersonas').value > 8) {
+                        document.getElementById('npersonas').value = 8;
+                    }else if(document.getElementById('npersonas').value < 1) {
+                        document.getElementById('npersonas').value = 1;
+                    }
+                }
+                
+                
+                
+                function validarDNI(dni) {
+                    
+                    let dniVal = document.getElementById('dni').value;
+                    let dniLabel = document.getElementById('dni');
+                    let dniAlerta = document.getElementById('spanDNI');
+                    
+                    dni = dniVal;
+                    
+                    let numero;
+                    let letr;
+                    let letra;
+                    let expresion_regular_dni;
+
+                    expresion_regular_dni = /^\d{8}[a-zA-Z]$/;
+
+                    if(expresion_regular_dni.test (dni) == true){
+                        numero = dni.substr(0,dni.length-1);
+                        letr = dni.substr(dni.length-1,1);
+                        numero = numero % 23;
+                        letra='TRWAGMYFPDXBNJZSQVHLCKET';
+                        letra=letra.substring(numero,numero+1);
+                        
+                        if (letra!=letr.toUpperCase()) {
+                            dniAlerta.innerHTML = 'Dni erroneo, la letra del NIF no se corresponde';
+                            dniLabel.setAttribute('title', 'Dni erroneo, la letra del NIF no se corresponde');
+                            document.getElementById("enviarBtn").disabled = true;
+                        }else{
+                            dniAlerta.innerHTML = '';
+                            dniLabel.setAttribute('title', '');
+                            document.getElementById("enviarBtn").disabled = false;
+                        }
+                    }else{
+                       dniAlerta.innerHTML = 'Dni erroneo, formato no válido';
+                       dniLabel.setAttribute('title', 'DNI erroeno, formato no válido');
+                       document.getElementById("enviarBtn").disabled = true;
+                       //console.log('Dni erroneo, formato no válido');
+                    }
+                }
+                
+                //FUNCIÓN PARA PODER ELEGIR QUE CATEGORÍA VER
+                let entrantes = '';
+                let bebidas = '';
+                let primeros = '';
+                let segundos = '';
+                let postres = '';
+                let todas = '';
+                
+                function elegirCategoria() {
+                    entrantes = document.getElementById('entrantes').checked;
+                    bebidas = document.getElementById('bebidas').checked;
+                    primeros = document.getElementById('primerPlato').checked;
+                    segundos = document.getElementById('segundoPlato').checked;
+                    postres = document.getElementById('postres').checked;
+                    todas = document.getElementById('todos').checked;
+                    
+                    
+                    if(todos) {
+                        document.getElementById('categoria1').style = mostrar;
+                        document.getElementById('categoria2').style = mostrar;
+                        document.getElementById('categoria3').style = mostrar;
+                        document.getElementById('categoria4').style = mostrar;
+                        document.getElementById('categoria5').style = mostrar;
+                    }
+                    
+                    if(bebidas) {
+                        document.getElementById('categoria1').style = ocultar;
+                        document.getElementById('categoria2').style = mostrar;
+                        document.getElementById('categoria3').style = ocultar;
+                        document.getElementById('categoria4').style = ocultar;
+                        document.getElementById('categoria5').style = ocultar;
+                    }
+                    
+                    if(entrantes) {
+                        document.getElementById('categoria1').style = mostrar;
+                        document.getElementById('categoria2').style = ocultar;
+                        document.getElementById('categoria3').style = ocultar;
+                        document.getElementById('categoria4').style = ocultar;
+                        document.getElementById('categoria5').style = ocultar;
+                    }
+                    
+                    if(primeros) {
+                        document.getElementById('categoria1').style = ocultar;
+                        document.getElementById('categoria2').style = ocultar;
+                        document.getElementById('categoria3').style = mostrar;
+                        document.getElementById('categoria4').style = ocultar;
+                        document.getElementById('categoria5').style = ocultar;
+                    }
+                    
+                    if(segundos) {
+                        document.getElementById('categoria1').style = ocultar;
+                        document.getElementById('categoria2').style = ocultar;
+                        document.getElementById('categoria3').style = ocultar;
+                        document.getElementById('categoria4').style = mostrar;
+                        document.getElementById('categoria5').style = ocultar;
+                    }
+                    
+                    if(postres) {
+                        document.getElementById('categoria1').style = ocultar;
+                        document.getElementById('categoria2').style = ocultar;
+                        document.getElementById('categoria3').style = ocultar;
+                        document.getElementById('categoria4').style = ocultar;
+                        document.getElementById('categoria5').style = mostrar;
+                    }
+                    
+                }
+                
+                function mostrarMenusAdmin() {
+                    if(document.getElementById('menuAdmin').style.display == 'none') {    
+                        document.getElementById('menuAdmin').style = mostrar;
+                    }else {
+                        document.getElementById('menuAdmin').style = ocultar;
+                    }
+                }
+                
+                function hola() {
+                    alert();
+                }
+                
+            </script>
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+{% endblock %}
+
+{% block aside %}
+    <aside class="aside-menu-responsive">
+        <div class="aside-menu-div">
+            <div class="aside-menu-div-a">
+                <a href="{{path('menus')}}" class="aside-menu-a">Menús</a>
+            </div>
+
+            <div class="aside-menu-div-a">
+                <a href="{{path('categorias')}}" class="aside-menu-a">Productos</a>
+            </div>
+
+            <div class="aside-menu-div-a">
+                <a href="{{path('reservas')}}" class="aside-menu-a">Reservas</a>
+            </div>
+
+            <div class="aside-menu-div-a">
+                <a href="{{path('contacto')}}" class="aside-menu-a">Contacto</a>
+            </div>
+
+            <div class="aside-menu-div-a">
+                <a href="{{path('index')}}#ubicacion" class="aside-menu-a">Ubicación</a>
+            </div>
+        </div>
+    </aside>
+{% endblock %}

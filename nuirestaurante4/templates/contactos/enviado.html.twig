@@ -1,0 +1,22 @@
+{# empty Twig template #}
+{% extends 'base.html.twig'%}
+
+{% block header %}    
+{% endblock %}
+
+{% block aside %}    
+{% endblock %}
+
+{% block body %}
+    <div class="register-body">
+        <div class="body-section-guardado">
+            <div class="div-section-titulo">
+            <h1>Su mensaje se ha enviado correctamente</h1>
+            </div>
+
+            <div class="aGuardado-div">
+                <a href="{{path('contacto')}}" class="aGuardado">Volver a contacto</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

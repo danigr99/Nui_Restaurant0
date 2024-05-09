@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="body-main">
+        <div class="body-section-ubicacion body-section-responsive">
+            <div class="div-section-titulo">
+                <h2>Contacte con nosotros para cualquier duda o sugerencia</h2>
+            </div>
+            
+            <form action="{{path('contactoEnviar')}}" name="contactoEnviar" method="POST" class="reservas-form reservas-form-responsive contacto-form-responsive">
+               
+                <div class="register-datos">
+                    <label class="texto-login">Nombre:</label>
+                    <input type="text" name="name" id="nombre" class="register-cajas cajaTexto-Form" placeholder="Nombre">
+                </div>
+
+                <div class="register-datos contacto-datos-dni-responsive">
+                    <label class="texto-login">DNI: *</label>
+                    <input type="text" name="dni" id="dni" title="" class="register-cajas cajaTexto-Form" maxlength="9" oninput="validarDNI()" placeholder="DNI" required>
+                    <br>
+                    <label class="usuarioIncorrecto" name="dniValido" id="spanDNI"></label>
+                </div>
+                
+                <div class="register-datos">
+                    <label class="texto-login">Correo: *</label>
+                    <input type="email" name="email" class="register-cajas cajaTexto-Form" placeholder="Correo" required>
+                </div>
+                
+                <br>
+                
+                <div class="register-datos-textarea contacto-textarea-div-responsive">
+                    <label class="texto-login texto-login-responsive">Mensaje: *</label>
+                    <textarea class="register-textarea contacto-textarea-responsive" name="mensaje" rows="10" cols="65" minlength="60" placeholder="Escribe aqui tu duda o sugerencia" required></textarea>
+                </div>
+                
+                <br>
+                
+                <input type="submit" id="enviarBtn" class="register-btn-submit margin-right" value="Enviar" disabled>
+            </form>
+        </div>
+    </div>
+{% endblock %}
